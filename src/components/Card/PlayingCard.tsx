@@ -6,10 +6,9 @@ import CardSuitIcon from './CardSuitIcon';
 export interface PlayingCardProps {
 	faceValue: CardValues;
 	suit: CardSuits;
-	key: number;
 }
 
-const PlayingCard: FC<PlayingCardProps> = (props) => {
+export const PlayingCard: FC<PlayingCardProps> = (props) => {
 	const CardContainer = styled(Card)({
 		width: 40,
 		height: 60,
@@ -29,7 +28,7 @@ const PlayingCard: FC<PlayingCardProps> = (props) => {
 	});
 
 	return (
-		<CardContainer key={props.key}>
+		<CardContainer>
 			<CardValueDiv>{props.faceValue}</CardValueDiv>
 			<CardValueIcon>
 				<CardSuitIcon suit={props.suit} />

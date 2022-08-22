@@ -31,7 +31,18 @@ const TableLayout = () => {
 			>
 				<StyledText>West</StyledText>
 			</Grid>
-			<Grid container item xs={8} justifyContent="center">
+			<Grid
+				container
+				item
+				xs={2}
+				justifyContent="center"
+				alignItems="center"
+			>
+				<div style={{ transform: 'rotate(90deg)' }}>
+					<CardDeck />
+				</div>
+			</Grid>
+			<Grid container item xs={4} justifyContent="center">
 				<CircularTable />
 			</Grid>
 			<Grid
@@ -41,7 +52,21 @@ const TableLayout = () => {
 				justifyContent="center"
 				alignItems="center"
 			>
+				<div style={{ transform: 'rotate(270deg)' }}>
+					<CardDeck posRight />
+				</div>
+			</Grid>
+			<Grid
+				container
+				item
+				xs={2}
+				justifyContent="center"
+				alignItems="center"
+			>
 				<StyledText>East</StyledText>
+			</Grid>
+			<Grid container item xs={12} justifyContent="center">
+				<CardDeck />
 			</Grid>
 			<Grid container item xs={12} justifyContent="center">
 				<StyledText>South</StyledText>

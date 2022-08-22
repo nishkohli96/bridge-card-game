@@ -12,7 +12,6 @@ export enum CardValues {
 	'CARD_4' = '4',
 	'CARD_3' = '3',
 	'CARD_2' = '2',
-	'CARD_1' = '1',
 }
 
 export enum CardSuits {

@@ -1,2 +1,2 @@
-export { default as PlayingCard } from './PlayingCard';
-export * from './CardTypes';
+export * from './Card';
+export * from './TableLayout';

@@ -14,7 +14,7 @@ const CardContainer = styled(Card)({
 	padding: 5,
 });
 
-const CardValueDiv = styled('div')({
+const CardValueDiv = styled('span')({
 	position: 'relative',
 	top: 0,
 });

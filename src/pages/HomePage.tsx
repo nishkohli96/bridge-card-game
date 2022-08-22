@@ -1,9 +1,14 @@
 import { FC } from 'react';
-import { PlayingCard, CardSuits, CardValues } from 'components';
+import { PlayingCard, CardSuits, CardValues, TableLayout } from 'components';
+import { Typography } from '@mui/material';
 
-const Page1: FC = () => {
+const HomePage: FC = () => {
 	return (
 		<div style={{ padding: 40 }}>
+			<Typography mb={2} variant="h4">
+				Bridge Game
+			</Typography>
+			<TableLayout />
 			<PlayingCard
 				faceValue={CardValues.CARD_10}
 				suit={CardSuits.CLUBS}
@@ -12,4 +17,4 @@ const Page1: FC = () => {
 	);
 };
 
-export default Page1;
+export default HomePage;

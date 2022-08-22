@@ -8,23 +8,25 @@ interface PlayingCardProps {
 	suit: CardSuits;
 }
 
-const CardContainer = styled(Card)({
-	width: 40,
-	height: 60,
-	padding: 5,
-});
-
-const CardValueDiv = styled('span')({
-	position: 'relative',
-	top: 0,
-});
-
-const CardValueIcon = styled('div')({
-	position: 'relative',
-	transform: 'translate(25%,10%)',
-});
-
 const PlayingCard: FC<PlayingCardProps> = (props) => {
+	const CardContainer = styled(Card)({
+		width: 40,
+		height: 60,
+		padding: 5,
+	});
+
+	const CardValueDiv = styled('span')({
+		color:
+			props.suit === CardSuits.DIAMONDS || props.suit === CardSuits.HEARTS
+				? 'red'
+				: 'black',
+	});
+
+	const CardValueIcon = styled('div')({
+		position: 'relative',
+		transform: 'translate(0%,30%)',
+	});
+
 	return (
 		<CardContainer>
 			<CardValueDiv>{props.faceValue}</CardValueDiv>

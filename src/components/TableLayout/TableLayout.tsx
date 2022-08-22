@@ -6,7 +6,8 @@ const StyledText = styled('div')(({ theme }) => ({
 	padding: '10px 5px',
 	background: theme.palette.success.main,
 	borderRadius: 5,
-	width: 100,
+	width: 80,
+	height: 30,
 	color: 'white',
 	textAlign: 'center',
 }));
@@ -17,13 +18,25 @@ const TableLayout = () => {
 			<Grid container item xs={12} justifyContent="center">
 				<StyledText>North</StyledText>
 			</Grid>
-			<Grid container item xs={2} justifyContent="center">
+			<Grid
+				container
+				item
+				xs={2}
+				justifyContent="center"
+				alignItems="center"
+			>
 				<StyledText>West</StyledText>
 			</Grid>
 			<Grid container item xs={8} justifyContent="center">
 				<CircularTable />
 			</Grid>
-			<Grid container item xs={2} justifyContent="center">
+			<Grid
+				container
+				item
+				xs={2}
+				justifyContent="center"
+				alignItems="center"
+			>
 				<StyledText>East</StyledText>
 			</Grid>
 			<Grid container item xs={12} justifyContent="center">

@@ -12,22 +12,25 @@ const CardContainer = styled(Card)({
 	width: 40,
 	height: 60,
 	padding: 5,
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
 });
 
 const CardValueDiv = styled('div')({
 	position: 'relative',
-	bottom: 15,
-	fontSize: 12,
+	top: 0,
+});
+
+const CardValueIcon = styled('div')({
+	position: 'relative',
+	transform: 'translate(25%,10%)',
 });
 
 const PlayingCard: FC<PlayingCardProps> = (props) => {
 	return (
 		<CardContainer>
 			<CardValueDiv>{props.faceValue}</CardValueDiv>
-			<CardSuitIcon suit={props.suit} />
+			<CardValueIcon>
+				<CardSuitIcon suit={props.suit} />
+			</CardValueIcon>
 		</CardContainer>
 	);
 };

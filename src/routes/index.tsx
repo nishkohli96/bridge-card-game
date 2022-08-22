@@ -6,12 +6,14 @@ const Page404 = lazy(() => import('pages/Page404'));
 
 const Routing: FC = () => {
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<Page1 />} />
-				<Route element={<Page404 />} />
-			</Routes>
-		</BrowserRouter>
+		<div className="root">
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Page1 />} />
+					<Route element={<Page404 />} />
+				</Routes>
+			</BrowserRouter>
+		</div>
 	);
 };
 

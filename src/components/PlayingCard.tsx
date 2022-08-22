@@ -8,16 +8,25 @@ interface PlayingCardProps {
 	suit: CardSuits;
 }
 
-const CardContainer = styled(Card)(({ theme }) => ({
+const CardContainer = styled(Card)({
 	width: 40,
 	height: 60,
 	padding: 5,
-}));
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+});
+
+const CardValueDiv = styled('div')({
+	position: 'relative',
+	bottom: 15,
+	fontSize: 12,
+});
 
 const PlayingCard: FC<PlayingCardProps> = (props) => {
 	return (
 		<CardContainer>
-			<p>{props.faceValue}</p>
+			<CardValueDiv>{props.faceValue}</CardValueDiv>
 			<CardSuitIcon suit={props.suit} />
 		</CardContainer>
 	);

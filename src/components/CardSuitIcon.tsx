@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import SvgIcon from '@mui/material/SvgIcon';
-import { ReactComponent as clubIcon } from 'assets/icons/club.svg';
-import { ReactComponent as diamondIcon } from 'assets/icons/diamond.svg';
-import { ReactComponent as heartIcon } from 'assets/icons/heart.svg';
-import { ReactComponent as spadesIcon } from 'assets/icons/spades.svg';
+import Icon from '@mui/material/Icon';
+import clubIcon from 'assets/images/club.png';
+import diamondIcon from 'assets/images/diamond.png';
+import heartIcon from 'assets/images/heart.png';
+import spadesIcon from 'assets/images/spade.png';
 import { CardSuits } from './CardTypes';
 
 interface CardSuitIconProps {
@@ -20,7 +20,11 @@ const CardSuitIcon: FC<CardSuitIconProps> = (props) => {
 			: suit === CardSuits.HEARTS
 			? heartIcon
 			: spadesIcon;
-	return <SvgIcon component={suitIcon} viewBox="0 0 24 24"></SvgIcon>;
+	return (
+		<Icon>
+			<img src={suitIcon} style={{ width: 24, height: 24 }} />
+		</Icon>
+	);
 };
 
 export default CardSuitIcon;

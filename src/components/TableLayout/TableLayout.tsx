@@ -26,7 +26,7 @@ const TableLayout = () => {
 				container
 				item
 				xs={2}
-				justifyContent="center"
+				justifyContent="flex-end"
 				alignItems="center"
 			>
 				<StyledText>West</StyledText>
@@ -35,7 +35,7 @@ const TableLayout = () => {
 				container
 				item
 				xs={2}
-				justifyContent="center"
+				justifyContent="flex-end"
 				alignItems="center"
 			>
 				<div style={{ transform: 'rotate(90deg)' }}>
@@ -48,8 +48,8 @@ const TableLayout = () => {
 			<Grid
 				container
 				item
-				xs={2}
-				justifyContent="center"
+				xs={1}
+				justifyContent="flex-start"
 				alignItems="center"
 			>
 				<div style={{ transform: 'rotate(270deg)' }}>
@@ -59,7 +59,7 @@ const TableLayout = () => {
 			<Grid
 				container
 				item
-				xs={2}
+				xs={3}
 				justifyContent="center"
 				alignItems="center"
 			>

@@ -1,5 +1,6 @@
 import { Grid, styled } from '@mui/material';
 import CircularTable from './CircularTable';
+import { CardDeck } from '../Card';
 
 const StyledText = styled('div')(({ theme }) => ({
 	fontSize: 20,
@@ -17,6 +18,9 @@ const TableLayout = () => {
 		<Grid container spacing={2}>
 			<Grid container item xs={12} justifyContent="center">
 				<StyledText>North</StyledText>
+			</Grid>
+			<Grid container item xs={12} justifyContent="center">
+				<CardDeck />
 			</Grid>
 			<Grid
 				container

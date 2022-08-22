@@ -3,9 +3,10 @@ import { CardValues, CardSuits } from './CardTypes';
 import { Card, styled } from '@mui/material';
 import CardSuitIcon from './CardSuitIcon';
 
-interface PlayingCardProps {
+export interface PlayingCardProps {
 	faceValue: CardValues;
 	suit: CardSuits;
+	key: number;
 }
 
 const PlayingCard: FC<PlayingCardProps> = (props) => {
@@ -28,7 +29,7 @@ const PlayingCard: FC<PlayingCardProps> = (props) => {
 	});
 
 	return (
-		<CardContainer>
+		<CardContainer key={props.key}>
 			<CardValueDiv>{props.faceValue}</CardValueDiv>
 			<CardValueIcon>
 				<CardSuitIcon suit={props.suit} />

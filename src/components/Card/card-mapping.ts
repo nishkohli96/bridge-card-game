@@ -59,3 +59,24 @@ export function mapCardIndexToValue(cardIndex: valueIndex) {
 			return CardValues.CARD_A;
 	}
 }
+
+/**
+ * Calculate player score.
+ * An Ace is worth four points, a King is worth three points,
+ * a Queen is worth two, and a Jack is worth one.
+ * Other cards are not worth points
+ */
+export function getScoreFromCardValue(cardIndex: suitIndex) {
+	switch (cardIndex) {
+		case 0:
+			return 4;
+		case 1:
+			return 3;
+		case 2:
+			return 2;
+		case 3:
+			return 1;
+		default:
+			return 0;
+	}
+}

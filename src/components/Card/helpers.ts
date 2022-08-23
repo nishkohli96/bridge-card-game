@@ -1,7 +1,11 @@
-import { mapCardIndexToSuit, mapCardIndexToValue } from './card-mapping';
+import {
+	mapCardIndexToSuit,
+	mapCardIndexToValue,
+	getScoreFromCardValue,
+} from './card-mapping';
 import { PlayingCardProps } from 'types';
 
-export function generateCardsArray(cards: number[]) {
+export function generateCardsArray(cards: number[]): PlayingCardProps[] {
 	const cardsArr: PlayingCardProps[] = [];
 	cards.map((card) => {
 		const suitIndex = Math.floor(card / 13);
@@ -20,4 +24,15 @@ export function generateCardsArray(cards: number[]) {
 		return cardsArr;
 	});
 	return cardsArr;
+}
+
+export function calculatePlayerScore(cardsArr: PlayingCardProps[]): number {
+	let totalScore = 0;
+	cardsArr.map((card) => {
+		const valueIndex = card.index % 13;
+		// @ts-ignore
+		totalScore += getScoreFromCardValue(valueIndex);
+		return totalScore;
+	});
+	return totalScore;
 }

@@ -1,5 +1,8 @@
 import { CardSuits, CardValues } from '.';
 
+export type suitIndex = 0 | 1 | 2 | 3;
+export type valueIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+
 /**
  * When starting a new game, assume cards are sorted
  * by suit (Spade, Heart, Diamond, Club),
@@ -9,7 +12,7 @@ import { CardSuits, CardValues } from '.';
 /**
  * parseInt(cardIndex/13) yields the card-suit
  */
-export function mapCardIndexToSuit(cardIndex: 0 | 1 | 2 | 3) {
+export function mapCardIndexToSuit(cardIndex: suitIndex) {
 	switch (cardIndex) {
 		case 0:
 			return CardSuits.SPADES;
@@ -27,9 +30,7 @@ export function mapCardIndexToSuit(cardIndex: 0 | 1 | 2 | 3) {
 /**
  * (cardIndex % 13) yields the card-value
  */
-export function mapCardIndexToValue(
-	cardIndex: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
-) {
+export function mapCardIndexToValue(cardIndex: valueIndex) {
 	switch (cardIndex) {
 		case 0:
 			return CardValues.CARD_A;

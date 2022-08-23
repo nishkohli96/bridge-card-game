@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { PlayingCard } from './PlayingCard';
 import { PlayingCardProps } from 'types';
 
@@ -9,11 +9,16 @@ export interface CardDeckProps {
 }
 
 const CardDeck: FC<CardDeckProps> = (props) => {
-	const highlightCard = (event: any) => {
-		const isSelected = event.target.classList.contains('selected');
-		isSelected
-			? event.target.classList.remove('selected')
-			: event.target.classList.add('selected');
+	const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+	const highlightCard = (event: any, cardIndex: number) => {
+		if (!selectedIndex) {
+			setSelectedIndex(cardIndex);
+			event.target.classList.add('selected');
+		} else {
+			setSelectedIndex(null);
+			event.target.classList.remove('selected');
+		}
 	};
 
 	return (
@@ -25,7 +30,7 @@ const CardDeck: FC<CardDeckProps> = (props) => {
 						zIndex: 20 + index,
 					}}
 					key={index}
-					onClick={highlightCard}
+					onClick={(e) => highlightCard(e, card.index)}
 				>
 					<PlayingCard
 						faceValue={card.faceValue}

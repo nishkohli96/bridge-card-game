@@ -21,7 +21,7 @@ export const PlayingCard: FC<PlayingCardProps> = (props) => {
 	});
 
 	const CardValueIcon = styled('div')({
-		position: 'relative',
+		position: 'sticky',
 		transform: 'translate(0%,30%)',
 	});
 

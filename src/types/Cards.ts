@@ -1,3 +1,6 @@
+export type suitIndex = 0 | 1 | 2 | 3;
+export type valueIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+
 export enum CardValues {
 	'CARD_A' = 'A',
 	'CARD_K' = 'K',
@@ -19,4 +22,12 @@ export enum CardSuits {
 	'HEARTS' = 'Hearts',
 	'DIAMONDS' = 'Diamonds',
 	'CLUBS' = 'Clubs',
+}
+
+/** index is the value corresponding to shuffledCards in redux-store */
+export interface PlayingCardProps {
+	faceValue: CardValues;
+	suit: CardSuits;
+	index: number;
+	isVisible: boolean;
 }

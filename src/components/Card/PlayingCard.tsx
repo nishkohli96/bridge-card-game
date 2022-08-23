@@ -1,14 +1,8 @@
 import { FC } from 'react';
-import { CardValues, CardSuits } from './CardTypes';
 import { Card, styled } from '@mui/material';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import { CardSuits, PlayingCardProps } from 'types';
 import CardSuitIcon from './CardSuitIcon';
-
-export interface PlayingCardProps {
-	faceValue: CardValues;
-	suit: CardSuits;
-	isVisible?: boolean;
-}
 
 export const PlayingCard: FC<PlayingCardProps> = (props) => {
 	const { isVisible, faceValue, suit } = props;

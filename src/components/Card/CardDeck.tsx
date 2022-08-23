@@ -1,32 +1,17 @@
 import { FC } from 'react';
-import { PlayingCard, PlayingCardProps } from './PlayingCard';
-import { CardValues, CardSuits } from './CardTypes';
+import { PlayingCard } from './PlayingCard';
+import { CardValues, CardSuits, PlayingCardProps } from 'types';
+
 export interface CardDeckProps {
 	posRight?: boolean;
-	// cards: PlayingCardProps[];
+	cards: PlayingCardProps[];
 	// numCards: number;
 }
-
-const cards = [
-	{ faceValue: CardValues.CARD_5, suit: CardSuits.SPADES },
-	{ faceValue: CardValues.CARD_2, suit: CardSuits.DIAMONDS },
-	{ faceValue: CardValues.CARD_4, suit: CardSuits.HEARTS },
-	{ faceValue: CardValues.CARD_8, suit: CardSuits.HEARTS },
-	{ faceValue: CardValues.CARD_8, suit: CardSuits.SPADES },
-	{ faceValue: CardValues.CARD_10, suit: CardSuits.SPADES },
-	{ faceValue: CardValues.CARD_5, suit: CardSuits.SPADES },
-	{ faceValue: CardValues.CARD_2, suit: CardSuits.DIAMONDS },
-	{ faceValue: CardValues.CARD_4, suit: CardSuits.HEARTS },
-	{ faceValue: CardValues.CARD_8, suit: CardSuits.HEARTS },
-	{ faceValue: CardValues.CARD_8, suit: CardSuits.SPADES },
-	{ faceValue: CardValues.CARD_10, suit: CardSuits.SPADES },
-	{ faceValue: CardValues.CARD_K, suit: CardSuits.SPADES },
-];
 
 const CardDeck: FC<CardDeckProps> = (props) => {
 	return (
 		<div style={{ display: 'flex', marginLeft: props.posRight ? 50 : 0 }}>
-			{cards.map((card, index) => (
+			{props.cards.map((card, index) => (
 				<div
 					style={{
 						marginLeft: -25,
@@ -34,7 +19,12 @@ const CardDeck: FC<CardDeckProps> = (props) => {
 					}}
 					key={index}
 				>
-					<PlayingCard faceValue={card.faceValue} suit={card.suit} />
+					<PlayingCard
+						faceValue={card.faceValue}
+						suit={card.suit}
+						index={card.index}
+						isVisible={card.isVisible}
+					/>
 				</div>
 			))}
 		</div>

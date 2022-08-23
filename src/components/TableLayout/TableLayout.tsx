@@ -1,7 +1,7 @@
 import { Container, Grid, styled } from '@mui/material';
 import { CardDeck, IntroDialog } from 'components';
 import CircularTable from './CircularTable';
-import { useCards } from '../Card/mapping';
+import { useCards } from '../Card/useCards';
 
 const StyledText = styled('div')(({ theme }) => ({
 	fontSize: 20,
@@ -15,7 +15,7 @@ const StyledText = styled('div')(({ theme }) => ({
 }));
 
 const TableLayout = () => {
-	useCards();
+	const allCards = useCards();
 	return (
 		<Container>
 			<IntroDialog />
@@ -24,7 +24,7 @@ const TableLayout = () => {
 					<StyledText>North</StyledText>
 				</Grid>
 				<Grid container item xs={12} justifyContent="center">
-					<CardDeck />
+					<CardDeck cards={allCards.slice(0, 13)} />
 				</Grid>
 				<Grid container item xs={12} style={{ margin: '20px 0px' }}>
 					<Grid
@@ -44,7 +44,7 @@ const TableLayout = () => {
 						alignItems="center"
 					>
 						<div style={{ transform: 'rotate(90deg)' }}>
-							<CardDeck />
+							<CardDeck cards={allCards.slice(13, 26)} />
 						</div>
 					</Grid>
 					<Grid container item xs={4} justifyContent="center">
@@ -58,7 +58,7 @@ const TableLayout = () => {
 						alignItems="center"
 					>
 						<div style={{ transform: 'rotate(270deg)' }}>
-							<CardDeck posRight />
+							<CardDeck cards={allCards.slice(26, 39)} />
 						</div>
 					</Grid>
 					<Grid
@@ -72,7 +72,7 @@ const TableLayout = () => {
 					</Grid>
 				</Grid>
 				<Grid container item xs={12} justifyContent="center">
-					<CardDeck />
+					<CardDeck cards={allCards.slice(39, 52)} />
 				</Grid>
 				<Grid container item xs={12} justifyContent="center">
 					<StyledText>South</StyledText>

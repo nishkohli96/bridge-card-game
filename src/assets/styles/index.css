@@ -13,7 +13,8 @@ code {
 }
 
 .root {
-	padding: 40px;
+	background-color: powderblue;
+	min-height: 100vh;
 }
 
 .text {

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { Grid, styled } from '@mui/material';
-import { AosDiv, CardDeck, IntroDialog, generateCardsArray } from 'components';
+import { CardDeck, IntroDialog, generateCardsArray } from 'components';
 import CircularTable from './CircularTable';
 import { useAppSelector, shuffledCardsSelector } from 'redux-store';
 import { Players } from 'types';
@@ -34,9 +34,7 @@ const TableLayout = () => {
 						<StyledText>{Players.NORTH}</StyledText>
 					</Grid>
 					<Grid container item xs={12} justifyContent="center">
-						<AosDiv slide="slide-down">
-							<CardDeck cards={allCards.slice(0, 13)} />
-						</AosDiv>
+						<CardDeck cards={allCards.slice(0, 13)} />
 					</Grid>
 					<Grid container item xs={12} style={{ margin: '20px 0px' }}>
 						<Grid
@@ -56,9 +54,7 @@ const TableLayout = () => {
 							alignItems="center"
 						>
 							<div style={{ transform: 'rotate(90deg)' }}>
-								<AosDiv slide="slide-left">
-									<CardDeck cards={allCards.slice(39, 52)} />
-								</AosDiv>
+								<CardDeck cards={allCards.slice(39, 52)} />
 							</div>
 						</Grid>
 						<Grid container item xs={4} justifyContent="center">
@@ -72,9 +68,7 @@ const TableLayout = () => {
 							alignItems="center"
 						>
 							<div style={{ transform: 'rotate(270deg)' }}>
-								<AosDiv slide="slide-up">
-									<CardDeck cards={allCards.slice(13, 26)} />
-								</AosDiv>
+								<CardDeck cards={allCards.slice(13, 26)} />
 							</div>
 						</Grid>
 						<Grid
@@ -88,9 +82,7 @@ const TableLayout = () => {
 						</Grid>
 					</Grid>
 					<Grid container item xs={12} justifyContent="center">
-						<AosDiv slide="slide-right">
-							<CardDeck cards={allCards.slice(26, 39)} />
-						</AosDiv>
+						<CardDeck cards={allCards.slice(26, 39)} />
 					</Grid>
 					<Grid container item xs={12} justifyContent="center">
 						<StyledText>{Players.SOUTH}</StyledText>

@@ -26,76 +26,81 @@ const TableLayout = () => {
 	const cards = useAppSelector(shuffledCardsSelector);
 	const allCards = useMemo(() => generateCardsArray(cards), [cards]);
 	return (
-		<Container>
-			<IntroDialog />
-			<Grid container spacing={2} style={{ marginTop: 1 }}>
-				<Grid container item xs={12} justifyContent="center">
-					<StyledText>{Players.NORTH}</StyledText>
-				</Grid>
-				<Grid container item xs={12} justifyContent="center">
-					<AosDiv slide="slide-down">
-						<CardDeck cards={allCards.slice(0, 13)} />
-					</AosDiv>
-				</Grid>
-				<Grid container item xs={12} style={{ margin: '20px 0px' }}>
-					<Grid
-						container
-						item
-						xs={2}
-						justifyContent="center"
-						alignItems="center"
-					>
-						<StyledText>{Players.WEST}</StyledText>
+		<Grid container>
+			<Grid container item xs={10}>
+				<Grid container spacing={2} style={{ marginTop: 1 }}>
+					<Grid container item xs={12} justifyContent="center">
+						<StyledText>{Players.NORTH}</StyledText>
 					</Grid>
-					<Grid
-						container
-						item
-						xs={2}
-						justifyContent="flex-end"
-						alignItems="center"
-					>
-						<div style={{ transform: 'rotate(90deg)' }}>
-							<AosDiv slide="slide-left">
-								<CardDeck cards={allCards.slice(39, 52)} />
-							</AosDiv>
-						</div>
+					<Grid container item xs={12} justifyContent="center">
+						<AosDiv slide="slide-down">
+							<CardDeck cards={allCards.slice(0, 13)} />
+						</AosDiv>
 					</Grid>
-					<Grid container item xs={4} justifyContent="center">
-						<CircularTable />
+					<Grid container item xs={12} style={{ margin: '20px 0px' }}>
+						<Grid
+							container
+							item
+							xs={2}
+							justifyContent="center"
+							alignItems="center"
+						>
+							<StyledText>{Players.WEST}</StyledText>
+						</Grid>
+						<Grid
+							container
+							item
+							xs={2}
+							justifyContent="flex-end"
+							alignItems="center"
+						>
+							<div style={{ transform: 'rotate(90deg)' }}>
+								<AosDiv slide="slide-left">
+									<CardDeck cards={allCards.slice(39, 52)} />
+								</AosDiv>
+							</div>
+						</Grid>
+						<Grid container item xs={4} justifyContent="center">
+							<CircularTable />
+						</Grid>
+						<Grid
+							container
+							item
+							xs={2}
+							justifyContent="flex-start"
+							alignItems="center"
+						>
+							<div style={{ transform: 'rotate(270deg)' }}>
+								<AosDiv slide="slide-up">
+									<CardDeck cards={allCards.slice(13, 26)} />
+								</AosDiv>
+							</div>
+						</Grid>
+						<Grid
+							container
+							item
+							xs={2}
+							justifyContent="center"
+							alignItems="center"
+						>
+							<StyledText>{Players.EAST}</StyledText>
+						</Grid>
 					</Grid>
-					<Grid
-						container
-						item
-						xs={2}
-						justifyContent="flex-start"
-						alignItems="center"
-					>
-						<div style={{ transform: 'rotate(270deg)' }}>
-							<AosDiv slide="slide-up">
-								<CardDeck cards={allCards.slice(13, 26)} />
-							</AosDiv>
-						</div>
+					<Grid container item xs={12} justifyContent="center">
+						<AosDiv slide="slide-right">
+							<CardDeck cards={allCards.slice(26, 39)} />
+						</AosDiv>
 					</Grid>
-					<Grid
-						container
-						item
-						xs={2}
-						justifyContent="center"
-						alignItems="center"
-					>
-						<StyledText>{Players.EAST}</StyledText>
+					<Grid container item xs={12} justifyContent="center">
+						<StyledText>{Players.SOUTH}</StyledText>
 					</Grid>
-				</Grid>
-				<Grid container item xs={12} justifyContent="center">
-					<AosDiv slide="slide-right">
-						<CardDeck cards={allCards.slice(26, 39)} />
-					</AosDiv>
-				</Grid>
-				<Grid container item xs={12} justifyContent="center">
-					<StyledText>{Players.SOUTH}</StyledText>
 				</Grid>
 			</Grid>
-		</Container>
+			<Grid item xs={2}>
+				pp
+			</Grid>
+			<IntroDialog />
+		</Grid>
 	);
 };
 

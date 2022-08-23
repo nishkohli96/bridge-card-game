@@ -14,7 +14,7 @@ export const CenterDiv = styled('div')({
 });
 
 export const Circle = styled('div')({
-	background: '#bfc7f5',
+	background: '#c7b2b1',
 	width: 250,
 	height: 250,
 	borderRadius: '50%',

@@ -2,7 +2,6 @@ import { FC, useState } from 'react';
 import { AppBar, Toolbar, Tooltip, Typography } from '@mui/material';
 import { ResetGameDialog, StyledIconButton, TableLayout } from 'components';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-import ScoreboardIcon from '@mui/icons-material/Scoreboard';
 
 const HomePage: FC = () => {
 	const [resetDialogOpen, setResetDialogOpen] = useState(false);
@@ -26,11 +25,6 @@ const HomePage: FC = () => {
 					<Tooltip title="New Game">
 						<StyledIconButton onClick={toggleDialog}>
 							<RestartAltIcon />
-						</StyledIconButton>
-					</Tooltip>
-					<Tooltip title="Score">
-						<StyledIconButton>
-							<ScoreboardIcon />
 						</StyledIconButton>
 					</Tooltip>
 				</Toolbar>

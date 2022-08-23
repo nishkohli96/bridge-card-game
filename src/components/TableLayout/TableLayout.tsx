@@ -1,5 +1,6 @@
+import { useMemo } from 'react';
 import { Container, Grid, styled } from '@mui/material';
-import { CardDeck, IntroDialog, useCards } from 'components';
+import { CardDeck, IntroDialog, generateCardsArray } from 'components';
 import CircularTable from './CircularTable';
 import { useAppSelector, shuffledCardsSelector } from 'redux-store';
 
@@ -22,7 +23,7 @@ const StyledText = styled('div')(({ theme }) => ({
 
 const TableLayout = () => {
 	const cards = useAppSelector(shuffledCardsSelector);
-	const allCards = useCards(cards);
+	const allCards = useMemo(() => generateCardsArray(cards), [cards]);
 	return (
 		<Container>
 			<IntroDialog />

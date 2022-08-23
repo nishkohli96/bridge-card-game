@@ -1,3 +1,3 @@
 export { default as CardDeck } from './CardDeck';
 export * from './PlayingCard';
-export * from './useCards';
+export * from './generateCardsArray';

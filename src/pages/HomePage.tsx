@@ -1,11 +1,13 @@
-import { FC } from 'react';
-import { TableLayout } from 'components';
+import { FC, useState } from 'react';
 import { AppBar, Toolbar, Tooltip, Typography } from '@mui/material';
-import { StyledIconButton } from 'components';
+import { ResetGameDialog, StyledIconButton, TableLayout } from 'components';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import ScoreboardIcon from '@mui/icons-material/Scoreboard';
 
 const HomePage: FC = () => {
+	const [resetDialogOpen, setResetDialogOpen] = useState(false);
+	const toggleDialog = () => setResetDialogOpen((state) => !state);
+
 	return (
 		<div>
 			<AppBar position="static">
@@ -22,7 +24,7 @@ const HomePage: FC = () => {
 						Bridge
 					</Typography>
 					<Tooltip title="New Game">
-						<StyledIconButton>
+						<StyledIconButton onClick={toggleDialog}>
 							<RestartAltIcon />
 						</StyledIconButton>
 					</Tooltip>
@@ -34,6 +36,10 @@ const HomePage: FC = () => {
 				</Toolbar>
 			</AppBar>
 			<TableLayout />
+			<ResetGameDialog
+				open={resetDialogOpen}
+				handleClose={toggleDialog}
+			/>
 		</div>
 	);
 };

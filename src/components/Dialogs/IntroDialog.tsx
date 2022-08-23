@@ -10,7 +10,7 @@ import {
 	Typography,
 } from '@mui/material';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import { CenterDiv, Header } from './Common';
+import { CenterDiv, Header } from '../Common';
 import { useAppDispatch, useAppSelector, toggle } from 'redux-store';
 import cardsImg from 'assets/images/cards.png';
 
@@ -19,7 +19,7 @@ const IntroDialog = () => {
 	const [cbValue, setCbValue] = useState(false);
 	const dispatch = useAppDispatch();
 	const shouldDialogOpen = useAppSelector(
-		(state) => state.helpDialog.helpDialogOpen
+		(state) => state.appSetup.helpDialogOpen
 	);
 
 	const handleClose = () => {

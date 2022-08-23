@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
-import { Container, Grid, styled } from '@mui/material';
+import { Grid, styled } from '@mui/material';
 import { AosDiv, CardDeck, IntroDialog, generateCardsArray } from 'components';
 import CircularTable from './CircularTable';
 import { useAppSelector, shuffledCardsSelector } from 'redux-store';
 import { Players } from 'types';
+import Scoreboard from './Scoreboard';
 
 const StyledText = styled('div')(({ theme }) => ({
 	fontSize: 20,
@@ -97,7 +98,7 @@ const TableLayout = () => {
 				</Grid>
 			</Grid>
 			<Grid item xs={2}>
-				pp
+				<Scoreboard />
 			</Grid>
 			<IntroDialog />
 		</Grid>

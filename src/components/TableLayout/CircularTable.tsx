@@ -2,8 +2,8 @@ import { styled } from '@mui/material';
 
 const Circle = styled('div')({
 	background: '#bfc7f5',
-	width: 300,
-	height: 300,
+	width: 250,
+	height: 250,
 	borderRadius: '50%',
 });
 

@@ -1,4 +1,4 @@
-import { Grid, styled } from '@mui/material';
+import { Container, Grid, styled } from '@mui/material';
 import CircularTable from './CircularTable';
 import { CardDeck } from '../Card';
 
@@ -15,63 +15,67 @@ const StyledText = styled('div')(({ theme }) => ({
 
 const TableLayout = () => {
 	return (
-		<Grid container spacing={2}>
-			<Grid container item xs={12} justifyContent="center">
-				<StyledText>North</StyledText>
-			</Grid>
-			<Grid container item xs={12} justifyContent="center">
-				<CardDeck />
-			</Grid>
-			<Grid
-				container
-				item
-				xs={2}
-				justifyContent="flex-end"
-				alignItems="center"
-			>
-				<StyledText>West</StyledText>
-			</Grid>
-			<Grid
-				container
-				item
-				xs={2}
-				justifyContent="flex-end"
-				alignItems="center"
-			>
-				<div style={{ transform: 'rotate(90deg)' }}>
+		<Container sx={{ marginTop: 10 }}>
+			<Grid container spacing={2}>
+				<Grid container item xs={12} justifyContent="center">
+					<StyledText>North</StyledText>
+				</Grid>
+				<Grid container item xs={12} justifyContent="center">
 					<CardDeck />
-				</div>
+				</Grid>
+				<Grid container item xs={12} style={{ margin: '20px 0px' }}>
+					<Grid
+						container
+						item
+						xs={2}
+						justifyContent="center"
+						alignItems="center"
+					>
+						<StyledText>West</StyledText>
+					</Grid>
+					<Grid
+						container
+						item
+						xs={2}
+						justifyContent="flex-end"
+						alignItems="center"
+					>
+						<div style={{ transform: 'rotate(90deg)' }}>
+							<CardDeck />
+						</div>
+					</Grid>
+					<Grid container item xs={4} justifyContent="center">
+						<CircularTable />
+					</Grid>
+					<Grid
+						container
+						item
+						xs={2}
+						justifyContent="flex-start"
+						alignItems="center"
+					>
+						<div style={{ transform: 'rotate(270deg)' }}>
+							<CardDeck posRight />
+						</div>
+					</Grid>
+					<Grid
+						container
+						item
+						xs={2}
+						justifyContent="flex-end"
+						alignItems="center"
+					>
+						<StyledText>East</StyledText>
+					</Grid>
+				</Grid>
+				<Grid container item xs={12} justifyContent="center">
+					<CardDeck />
+				</Grid>
+				<Grid container item xs={12} justifyContent="center">
+					<StyledText>South</StyledText>
+				</Grid>
 			</Grid>
-			<Grid container item xs={4} justifyContent="center">
-				<CircularTable />
-			</Grid>
-			<Grid
-				container
-				item
-				xs={1}
-				justifyContent="flex-start"
-				alignItems="center"
-			>
-				<div style={{ transform: 'rotate(270deg)' }}>
-					<CardDeck posRight />
-				</div>
-			</Grid>
-			<Grid
-				container
-				item
-				xs={3}
-				justifyContent="center"
-				alignItems="center"
-			>
-				<StyledText>East</StyledText>
-			</Grid>
-			<Grid container item xs={12} justifyContent="center">
-				<CardDeck />
-			</Grid>
-			<Grid container item xs={12} justifyContent="center">
-				<StyledText>South</StyledText>
-			</Grid>
-		</Grid>
+		</Container>
 	);
 };
 

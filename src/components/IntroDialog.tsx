@@ -50,6 +50,8 @@ const IntroDialog = () => {
 				<Button
 					variant="contained"
 					startIcon={<YouTubeIcon />}
+					target="_blank"
+					component="a"
 					href="https://www.youtube.com/watch?v=2IomnCvxWzM&t=847s"
 				>
 					Learn Bridge

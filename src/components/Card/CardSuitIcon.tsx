@@ -22,7 +22,11 @@ const CardSuitIcon: FC<CardSuitIconProps> = (props) => {
 			: spadesIcon;
 	return (
 		<Icon>
-			<img src={suitIcon} style={{ width: 24, height: 24 }} />
+			<img
+				src={suitIcon}
+				style={{ width: 24, height: 24 }}
+				alt="card-suit"
+			/>
 		</Icon>
 	);
 };

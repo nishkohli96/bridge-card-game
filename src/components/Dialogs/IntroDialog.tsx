@@ -10,7 +10,7 @@ import {
 	Typography,
 } from '@mui/material';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import { CenterDiv, Header } from '../Common';
+import { CenterDiv, Header } from 'components';
 import {
 	useAppDispatch,
 	useAppSelector,

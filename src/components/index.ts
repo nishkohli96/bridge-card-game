@@ -1,4 +1,4 @@
 export * from './Card';
-export * from './Common';
+export * from './Styled';
 export * from './Dialogs';
 export * from './TableLayout';

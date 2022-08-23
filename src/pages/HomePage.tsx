@@ -1,12 +1,7 @@
 import { FC } from 'react';
 import { TableLayout } from 'components';
-import {
-	AppBar,
-	IconButton,
-	Toolbar,
-	Tooltip,
-	Typography,
-} from '@mui/material';
+import { AppBar, Toolbar, Tooltip, Typography } from '@mui/material';
+import { StyledIconButton } from 'components';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import ScoreboardIcon from '@mui/icons-material/Scoreboard';
 
@@ -16,7 +11,7 @@ const HomePage: FC = () => {
 			<AppBar position="static">
 				<Toolbar>
 					<Typography
-						variant="h6"
+						variant="h5"
 						component="div"
 						sx={{
 							flexGrow: 1,
@@ -27,14 +22,14 @@ const HomePage: FC = () => {
 						Bridge
 					</Typography>
 					<Tooltip title="New Game">
-						<IconButton>
+						<StyledIconButton>
 							<RestartAltIcon />
-						</IconButton>
+						</StyledIconButton>
 					</Tooltip>
 					<Tooltip title="Score">
-						<IconButton>
+						<StyledIconButton>
 							<ScoreboardIcon />
-						</IconButton>
+						</StyledIconButton>
 					</Tooltip>
 				</Toolbar>
 			</AppBar>

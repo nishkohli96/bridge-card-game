@@ -1,6 +1,7 @@
 import { Container, Grid, styled } from '@mui/material';
 import { CardDeck, IntroDialog, useCards } from 'components';
 import CircularTable from './CircularTable';
+import { useAppSelector, shuffledCardsSelector } from 'redux-store';
 
 const StyledText = styled('div')(({ theme }) => ({
 	fontSize: 20,
@@ -20,7 +21,8 @@ const StyledText = styled('div')(({ theme }) => ({
  */
 
 const TableLayout = () => {
-	const allCards = useCards();
+	const cards = useAppSelector(shuffledCardsSelector);
+	const allCards = useCards(cards);
 	return (
 		<Container>
 			<IntroDialog />

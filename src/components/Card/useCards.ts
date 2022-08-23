@@ -1,9 +1,7 @@
-import { useAppSelector, shuffledCardsSelector } from 'redux-store';
 import { mapCardIndexToSuit, mapCardIndexToValue } from './card-mapping';
 import { PlayingCardProps } from 'types';
 
-export const useCards = () => {
-	const cards = useAppSelector(shuffledCardsSelector);
+export const useCards = (cards: number[]) => {
 	const cardsArr: PlayingCardProps[] = [];
 	cards.map((card) => {
 		const suitIndex = Math.floor(card / 13);
@@ -21,6 +19,5 @@ export const useCards = () => {
 		});
 		return cardsArr;
 	});
-	console.log(cardsArr);
 	return cardsArr;
 };

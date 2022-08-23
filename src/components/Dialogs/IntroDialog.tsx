@@ -11,20 +11,27 @@ import {
 } from '@mui/material';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { CenterDiv, Header } from '../Common';
-import { useAppDispatch, useAppSelector, toggle } from 'redux-store';
+import {
+	useAppDispatch,
+	useAppSelector,
+	helpDialogOpenSelector,
+	shuffledCardsSelector,
+	toggle,
+	shuffleCards,
+} from 'redux-store';
 import cardsImg from 'assets/images/cards.png';
 
 const IntroDialog = () => {
 	const [open, setOpen] = useState(true);
 	const [cbValue, setCbValue] = useState(false);
 	const dispatch = useAppDispatch();
-	const shouldDialogOpen = useAppSelector(
-		(state) => state.appSetup.helpDialogOpen
-	);
+	const shouldDialogOpen = useAppSelector(helpDialogOpenSelector);
+	const shuffledCards = useAppSelector(shuffledCardsSelector);
 
 	const handleClose = () => {
 		setOpen(false);
 		cbValue && dispatch(toggle());
+		shuffledCards.length === 0 && dispatch(shuffleCards());
 	};
 	const handleCbChange = () => setCbValue((prevVal) => !prevVal);
 

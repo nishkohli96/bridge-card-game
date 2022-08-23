@@ -1,6 +1,14 @@
 import { FC } from 'react';
 import { TableLayout } from 'components';
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import {
+	AppBar,
+	IconButton,
+	Toolbar,
+	Tooltip,
+	Typography,
+} from '@mui/material';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import ScoreboardIcon from '@mui/icons-material/Scoreboard';
 
 const HomePage: FC = () => {
 	return (
@@ -18,6 +26,16 @@ const HomePage: FC = () => {
 					>
 						Bridge
 					</Typography>
+					<Tooltip title="New Game">
+						<IconButton>
+							<RestartAltIcon />
+						</IconButton>
+					</Tooltip>
+					<Tooltip title="Score">
+						<IconButton>
+							<ScoreboardIcon />
+						</IconButton>
+					</Tooltip>
 				</Toolbar>
 			</AppBar>
 			<TableLayout />

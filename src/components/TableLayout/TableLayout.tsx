@@ -15,7 +15,7 @@ const StyledText = styled('div')(({ theme }) => ({
 
 const TableLayout = () => {
 	return (
-		<Container sx={{ marginTop: 10 }}>
+		<Container>
 			<Grid container spacing={2}>
 				<Grid container item xs={12} justifyContent="center">
 					<StyledText>North</StyledText>

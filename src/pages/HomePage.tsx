@@ -7,7 +7,17 @@ const HomePage: FC = () => {
 		<div>
 			<AppBar position="static">
 				<Toolbar>
-					<Typography variant="h6">Bridge Game</Typography>
+					<Typography
+						variant="h6"
+						component="div"
+						sx={{
+							flexGrow: 1,
+							display: 'flex',
+							justifyContent: 'center',
+						}}
+					>
+						Bridge
+					</Typography>
 				</Toolbar>
 			</AppBar>
 			<TableLayout />

@@ -9,6 +9,13 @@ export interface CardDeckProps {
 }
 
 const CardDeck: FC<CardDeckProps> = (props) => {
+	const highlightCard = (event: any) => {
+		const isSelected = event.target.classList.contains('selected');
+		isSelected
+			? event.target.classList.remove('selected')
+			: event.target.classList.add('selected');
+	};
+
 	return (
 		<div style={{ display: 'flex', marginLeft: props.posRight ? 50 : 0 }}>
 			{props.cards.map((card, index) => (
@@ -18,6 +25,7 @@ const CardDeck: FC<CardDeckProps> = (props) => {
 						zIndex: 20 + index,
 					}}
 					key={index}
+					onClick={highlightCard}
 				>
 					<PlayingCard
 						faceValue={card.faceValue}

@@ -67,7 +67,12 @@ const TableLayout = () => {
 							justifyContent="flex-start"
 							alignItems="center"
 						>
-							<div style={{ transform: 'rotate(270deg)' }}>
+							<div
+								style={{
+									transform: 'rotate(270deg)',
+									marginTop: -50,
+								}}
+							>
 								<CardDeck cards={allCards.slice(13, 26)} />
 							</div>
 						</Grid>

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { PlayingCard } from './PlayingCard';
-import { CardValues, CardSuits, PlayingCardProps } from 'types';
+import { PlayingCardProps } from 'types';
 
 export interface CardDeckProps {
 	posRight?: boolean;

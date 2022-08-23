@@ -3,7 +3,7 @@ import { Container, Grid, styled } from '@mui/material';
 import { AosDiv, CardDeck, IntroDialog, generateCardsArray } from 'components';
 import CircularTable from './CircularTable';
 import { useAppSelector, shuffledCardsSelector } from 'redux-store';
-import { AosSlide } from 'types';
+import { Players } from 'types';
 
 const StyledText = styled('div')(({ theme }) => ({
 	fontSize: 20,
@@ -30,7 +30,7 @@ const TableLayout = () => {
 			<IntroDialog />
 			<Grid container spacing={2} style={{ marginTop: 1 }}>
 				<Grid container item xs={12} justifyContent="center">
-					<StyledText>North</StyledText>
+					<StyledText>{Players.NORTH}</StyledText>
 				</Grid>
 				<Grid container item xs={12} justifyContent="center">
 					<AosDiv slide="slide-down">
@@ -45,7 +45,7 @@ const TableLayout = () => {
 						justifyContent="center"
 						alignItems="center"
 					>
-						<StyledText>West</StyledText>
+						<StyledText>{Players.WEST}</StyledText>
 					</Grid>
 					<Grid
 						container
@@ -80,10 +80,10 @@ const TableLayout = () => {
 						container
 						item
 						xs={2}
-						justifyContent="flex-end"
+						justifyContent="center"
 						alignItems="center"
 					>
-						<StyledText>East</StyledText>
+						<StyledText>{Players.EAST}</StyledText>
 					</Grid>
 				</Grid>
 				<Grid container item xs={12} justifyContent="center">
@@ -92,7 +92,7 @@ const TableLayout = () => {
 					</AosDiv>
 				</Grid>
 				<Grid container item xs={12} justifyContent="center">
-					<StyledText>South</StyledText>
+					<StyledText>{Players.SOUTH}</StyledText>
 				</Grid>
 			</Grid>
 		</Container>

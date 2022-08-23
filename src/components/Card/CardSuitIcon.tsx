@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import Icon from '@mui/material/Icon';
+import { CardSuits } from 'types';
 import clubIcon from 'assets/images/club.png';
 import diamondIcon from 'assets/images/diamond.png';
 import heartIcon from 'assets/images/heart.png';
 import spadesIcon from 'assets/images/spade.png';
-import { CardSuits } from './CardTypes';
 
 interface CardSuitIconProps {
 	suit: CardSuits;

@@ -4,7 +4,7 @@
 
 services:
     dev:
-        image: nish1896/reat-ts-dev
+        image: nish1896/bridge-dev
         build:
             context: .
             dockerfile: Dockerfile.dev
@@ -14,7 +14,7 @@ services:
             - .:/app
             - /app/node_modules
     prod:
-        image: nish1896/react-ts-prod
+        image: nish1896/bridge-prod
         build: .
         ports:
             - '3000:80'

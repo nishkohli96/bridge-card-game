@@ -10,10 +10,10 @@ import {
 	REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import helpDialogReducer from './helpDialog.slice';
+import appSetupReducer from './appSetup.slice';
 
 const rootReducer = combineReducers({
-	helpDialog: helpDialogReducer,
+	appSetup: appSetupReducer,
 });
 
 const persistConfig = {

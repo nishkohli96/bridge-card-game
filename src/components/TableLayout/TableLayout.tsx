@@ -1,7 +1,6 @@
 import { Container, Grid, styled } from '@mui/material';
-import { CardDeck, IntroDialog } from 'components';
+import { CardDeck, IntroDialog, useCards } from 'components';
 import CircularTable from './CircularTable';
-import { useCards } from '../Card/useCards';
 
 const StyledText = styled('div')(({ theme }) => ({
 	fontSize: 20,
@@ -13,6 +12,12 @@ const StyledText = styled('div')(({ theme }) => ({
 	color: 'white',
 	textAlign: 'center',
 }));
+
+/**
+ * The order of turns is North, East, South, West.
+ * Thus assigning each stack of the 13 shuffled cards
+ * in this order.
+ */
 
 const TableLayout = () => {
 	const allCards = useCards();
@@ -44,7 +49,7 @@ const TableLayout = () => {
 						alignItems="center"
 					>
 						<div style={{ transform: 'rotate(90deg)' }}>
-							<CardDeck cards={allCards.slice(13, 26)} />
+							<CardDeck cards={allCards.slice(39, 52)} />
 						</div>
 					</Grid>
 					<Grid container item xs={4} justifyContent="center">
@@ -58,7 +63,7 @@ const TableLayout = () => {
 						alignItems="center"
 					>
 						<div style={{ transform: 'rotate(270deg)' }}>
-							<CardDeck cards={allCards.slice(26, 39)} />
+							<CardDeck cards={allCards.slice(13, 26)} />
 						</div>
 					</Grid>
 					<Grid
@@ -72,7 +77,7 @@ const TableLayout = () => {
 					</Grid>
 				</Grid>
 				<Grid container item xs={12} justifyContent="center">
-					<CardDeck cards={allCards.slice(39, 52)} />
+					<CardDeck cards={allCards.slice(26, 39)} />
 				</Grid>
 				<Grid container item xs={12} justifyContent="center">
 					<StyledText>South</StyledText>

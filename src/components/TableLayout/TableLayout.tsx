@@ -1,6 +1,7 @@
 import { Container, Grid, styled } from '@mui/material';
 import { CardDeck, IntroDialog } from 'components';
 import CircularTable from './CircularTable';
+import { useCards } from '../Card/mapping';
 
 const StyledText = styled('div')(({ theme }) => ({
 	fontSize: 20,
@@ -14,6 +15,7 @@ const StyledText = styled('div')(({ theme }) => ({
 }));
 
 const TableLayout = () => {
+	useCards();
 	return (
 		<Container>
 			<IntroDialog />

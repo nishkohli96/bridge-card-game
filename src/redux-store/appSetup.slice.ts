@@ -19,10 +19,10 @@ export const appSetupSlice = createSlice({
 		},
 		shuffleCards: (state) => {
 			/**
-			 * Generate an array from 1 to 52.
+			 * Generate an array from 0 to 51.
 			 * Now rearrange them in random order.
 			 */
-			const sequence = Array.from(Array(52), (_, index) => index + 1);
+			const sequence = Array.from(Array(52), (_, index) => index);
 			const shuffledArray = sequence.sort((a, b) => 0.5 - Math.random());
 			state.shuffledCards = shuffledArray;
 		},

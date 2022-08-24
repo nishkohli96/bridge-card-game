@@ -1,12 +1,6 @@
 import { useMemo } from 'react';
 import { Grid, styled } from '@mui/material';
-import {
-	CardDeck,
-	FlexEndDiv,
-	IntroDialog,
-	generateCardsArray,
-	calculatePlayerScore,
-} from 'components';
+import { CardDeck, IntroDialog, generateCardsArray } from 'components';
 import PlayTable from './PlayTable';
 import {
 	useAppSelector,
@@ -38,7 +32,6 @@ const TableLayout = () => {
 	const turnOfPlayer = useAppSelector(turnOfPlayerSelector);
 	const showAllCards = useAppSelector(showAllCardsSelector);
 	const allCards = useMemo(() => generateCardsArray(cards), [cards]);
-	const scoreNorth = calculatePlayerScore(allCards.slice(0, 13));
 
 	const turnOfNorth = turnOfPlayer === Players.NORTH;
 	const turnOfEast = turnOfPlayer === Players.EAST;
@@ -61,7 +54,7 @@ const TableLayout = () => {
 						isVisible={turnOfNorth || showAllCards}
 					/>
 				</Grid>
-				<Grid container item xs={4}>
+				<Grid item xs={4}>
 					<StyledText
 						{...(turnOfNorth && { className: 'highlightBlock' })}
 					>
@@ -70,41 +63,51 @@ const TableLayout = () => {
 				</Grid>
 			</Grid>
 			<Grid container item xs={12} alignItems="center">
-				<Grid container direction="column" item xs={4} spacing={2}>
-					<Grid container item justifyContent="flex-end">
+				<Grid
+					container
+					direction="column"
+					item
+					xs={4}
+					spacing={2}
+					alignItems="flex-end"
+				>
+					<Grid item>
 						<CardDeck
 							cards={allCards.slice(39, 52)}
 							isVisible={turnOfWest || showAllCards}
 						/>
 					</Grid>
 					<Grid item>
-						<FlexEndDiv>
-							<StyledText
-								{...(turnOfWest && {
-									className: 'highlightBlock',
-								})}
-							>
-								{Players.WEST}
-							</StyledText>
-						</FlexEndDiv>
+						<StyledText
+							{...(turnOfWest && {
+								className: 'highlightBlock',
+							})}
+						>
+							{Players.WEST}
+						</StyledText>
 					</Grid>
 				</Grid>
 				<Grid container item xs={4} justifyContent="center">
 					<PlayTable />
 				</Grid>
-				<Grid container item xs={4}>
-					<CardDeck
-						cards={allCards.slice(13, 26)}
-						isVisible={turnOfEast || showAllCards}
-					/>
+				<Grid container direction="column" item xs={4} spacing={2}>
+					<Grid item>
+						<CardDeck
+							cards={allCards.slice(13, 26)}
+							posRight
+							isVisible={turnOfEast || showAllCards}
+						/>
+					</Grid>
+					<Grid item>
+						<StyledText
+							{...(turnOfEast && {
+								className: 'highlightBlock',
+							})}
+						>
+							{Players.EAST}
+						</StyledText>
+					</Grid>
 				</Grid>
-				{/* <Grid container item xs={2}>
-					<StyledText
-						{...(turnOfEast && { className: 'highlightBlock' })}
-					>
-						{Players.EAST || showAllCards}
-					</StyledText>
-				</Grid> */}
 			</Grid>
 			<Grid
 				container
@@ -120,7 +123,7 @@ const TableLayout = () => {
 						isVisible={turnOfSouth || showAllCards}
 					/>
 				</Grid>
-				<Grid container item xs={4}>
+				<Grid item xs={4}>
 					<StyledText
 						{...(turnOfSouth && { className: 'highlightBlock' })}
 					>

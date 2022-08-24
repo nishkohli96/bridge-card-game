@@ -10,6 +10,7 @@ export interface CardDeckProps {
 }
 
 const CardDeck: FC<CardDeckProps> = (props) => {
+	const shiftOffset = 25;
 	const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
 	const highlightCard = (event: any, cardIndex: number) => {
@@ -23,11 +24,16 @@ const CardDeck: FC<CardDeckProps> = (props) => {
 	};
 
 	return (
-		<div style={{ display: 'flex', marginLeft: props.posRight ? 50 : 0 }}>
+		<div
+			style={{
+				display: 'flex',
+				marginLeft: props.posRight ? shiftOffset : 0,
+			}}
+		>
 			{props.cards.map((card, index) => (
 				<div
 					style={{
-						marginLeft: -25,
+						marginLeft: shiftOffset * -1,
 						zIndex: 20 + index,
 					}}
 					key={index}

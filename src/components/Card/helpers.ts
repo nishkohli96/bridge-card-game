@@ -42,8 +42,10 @@ export function getCardsFromCardsArray(
 	end: number
 ): CardInfo[] {
 	const res = [];
-	for (let i = start; i < end; i++) {
-		res.push(cards[i]);
+	if (cards.length > 0) {
+		for (let i = start; i < end; i++) {
+			res.push(cards[i]);
+		}
 	}
 	return res;
 }

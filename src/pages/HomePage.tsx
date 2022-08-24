@@ -1,11 +1,25 @@
 import { FC, useState } from 'react';
 import { AppBar, Toolbar, Tooltip, Typography } from '@mui/material';
-import { ResetGameDialog, StyledIconButton, TableLayout } from 'components';
-import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import {
+	ResetGameDialog,
+	StyledIconButton,
+	Scoreboard,
+	TableLayout,
+} from 'components';
+import {
+	RestartAlt,
+	Visibility,
+	Scoreboard as ScoreboardIcon,
+} from '@mui/icons-material';
+import { toggleCardsVisibility, useAppDispatch } from 'redux-store';
 
 const HomePage: FC = () => {
 	const [resetDialogOpen, setResetDialogOpen] = useState(false);
+	const [drawerOpen, setDrawerOpen] = useState(false);
+	const dispatch = useAppDispatch();
+
 	const toggleDialog = () => setResetDialogOpen((state) => !state);
+	const toggleDrawer = () => setDrawerOpen((state) => !state);
 
 	return (
 		<div>
@@ -22,9 +36,21 @@ const HomePage: FC = () => {
 					>
 						Bridge
 					</Typography>
+					<Tooltip title="View All Cards">
+						<StyledIconButton
+							onClick={() => dispatch(toggleCardsVisibility())}
+						>
+							<Visibility />
+						</StyledIconButton>
+					</Tooltip>
 					<Tooltip title="New Game">
 						<StyledIconButton onClick={toggleDialog}>
-							<RestartAltIcon />
+							<RestartAlt />
+						</StyledIconButton>
+					</Tooltip>
+					<Tooltip title="Scorecard">
+						<StyledIconButton onClick={toggleDrawer}>
+							<ScoreboardIcon />
 						</StyledIconButton>
 					</Tooltip>
 				</Toolbar>
@@ -34,6 +60,7 @@ const HomePage: FC = () => {
 				open={resetDialogOpen}
 				handleClose={toggleDialog}
 			/>
+			<Scoreboard open={drawerOpen} handleClose={toggleDrawer} />
 		</div>
 	);
 };

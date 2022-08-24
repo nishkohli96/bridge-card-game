@@ -3,17 +3,20 @@ import { Grid, styled } from '@mui/material';
 import {
 	CardDeck,
 	IntroDialog,
-	generateCardsArray,
 	calculatePlayerScore,
+	generateCardsArray,
+	getCardsFromCardsArray,
 } from 'components';
 import PlayTable from './PlayTable';
 import {
 	useAppSelector,
+	useAppDispatch,
 	shuffledCardsSelector,
 	turnOfPlayerSelector,
+	showAllCardsSelector,
+	setScores,
 } from 'redux-store';
 import { Players } from 'types';
-import Scoreboard from './Scoreboard';
 
 const StyledText = styled('div')(({ theme }) => ({
 	fontSize: 20,
@@ -33,10 +36,25 @@ const StyledText = styled('div')(({ theme }) => ({
  */
 
 const TableLayout = () => {
+	const dispatch = useAppDispatch();
 	const cards = useAppSelector(shuffledCardsSelector);
 	const turnOfPlayer = useAppSelector(turnOfPlayerSelector);
+	const showAllCards = useAppSelector(showAllCardsSelector);
 	const allCards = useMemo(() => generateCardsArray(cards), [cards]);
-	const scoreNorth = calculatePlayerScore(allCards.slice(0, 13));
+
+	const cardsWithNorth = getCardsFromCardsArray(allCards, 0, 13);
+	const cardsWithEast = getCardsFromCardsArray(allCards, 13, 26);
+	const cardsWithSouth = getCardsFromCardsArray(allCards, 26, 39);
+	const cardsWithWest = getCardsFromCardsArray(allCards, 39, 52);
+
+	dispatch(
+		setScores([
+			calculatePlayerScore(cardsWithNorth),
+			calculatePlayerScore(cardsWithEast),
+			calculatePlayerScore(cardsWithSouth),
+			calculatePlayerScore(cardsWithWest),
+		])
+	);
 
 	const turnOfNorth = turnOfPlayer === Players.NORTH;
 	const turnOfEast = turnOfPlayer === Players.EAST;
@@ -53,13 +71,13 @@ const TableLayout = () => {
 				spacing={2}
 				style={{ marginTop: 20 }}
 			>
-				<Grid container item xs={8} justifyContent="flex-end">
+				<Grid container item xs={7} justifyContent="flex-end">
 					<CardDeck
-						cards={allCards.slice(0, 13)}
-						isVisible={turnOfNorth}
+						cards={cardsWithNorth}
+						isVisible={turnOfNorth || showAllCards}
 					/>
 				</Grid>
-				<Grid container item xs={4}>
+				<Grid item xs={4}>
 					<StyledText
 						{...(turnOfNorth && { className: 'highlightBlock' })}
 					>
@@ -68,43 +86,50 @@ const TableLayout = () => {
 				</Grid>
 			</Grid>
 			<Grid container item xs={12} alignItems="center">
-				<Grid container item xs={3} justifyContent="flex-end">
-					<StyledText
-						{...(turnOfWest && { className: 'highlightBlock' })}
-					>
-						{Players.WEST}
-					</StyledText>
-				</Grid>
-				<Grid container item xs={2} justifyContent="flex-end">
-					<div style={{ transform: 'rotate(90deg)' }}>
+				<Grid
+					container
+					direction="column"
+					item
+					xs={4}
+					spacing={2}
+					alignItems="flex-end"
+				>
+					<Grid item>
 						<CardDeck
-							cards={allCards.slice(39, 52)}
-							isVisible={turnOfWest}
+							cards={cardsWithWest}
+							isVisible={turnOfWest || showAllCards}
 						/>
-					</div>
+					</Grid>
+					<Grid item>
+						<StyledText
+							{...(turnOfWest && {
+								className: 'highlightBlock',
+							})}
+						>
+							{Players.WEST}
+						</StyledText>
+					</Grid>
 				</Grid>
-				<Grid container item xs={3} justifyContent="center">
+				<Grid container item xs={4} justifyContent="center">
 					<PlayTable />
 				</Grid>
-				<Grid container item xs={2}>
-					<div
-						style={{
-							transform: 'rotate(270deg)',
-							marginTop: -50,
-						}}
-					>
+				<Grid container direction="column" item xs={4} spacing={2}>
+					<Grid item>
 						<CardDeck
-							cards={allCards.slice(13, 26)}
-							isVisible={turnOfEast}
+							cards={cardsWithEast}
+							posRight
+							isVisible={turnOfEast || showAllCards}
 						/>
-					</div>
-				</Grid>
-				<Grid container item xs={2}>
-					<StyledText
-						{...(turnOfEast && { className: 'highlightBlock' })}
-					>
-						{Players.EAST}
-					</StyledText>
+					</Grid>
+					<Grid item>
+						<StyledText
+							{...(turnOfEast && {
+								className: 'highlightBlock',
+							})}
+						>
+							{Players.EAST}
+						</StyledText>
+					</Grid>
 				</Grid>
 			</Grid>
 			<Grid
@@ -115,13 +140,13 @@ const TableLayout = () => {
 				spacing={2}
 				style={{ marginTop: 20 }}
 			>
-				<Grid container item xs={8} justifyContent="flex-end">
+				<Grid container item xs={7} justifyContent="flex-end">
 					<CardDeck
-						cards={allCards.slice(26, 39)}
-						isVisible={turnOfSouth}
+						cards={cardsWithSouth}
+						isVisible={turnOfSouth || showAllCards}
 					/>
 				</Grid>
-				<Grid container item xs={4}>
+				<Grid item xs={4}>
 					<StyledText
 						{...(turnOfSouth && { className: 'highlightBlock' })}
 					>

@@ -1,2 +1,2 @@
-export * from './Cards';
-export * from './Misc';
+export * from './cards';
+export * from './gameplay';

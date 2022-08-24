@@ -35,3 +35,15 @@ export function calculatePlayerScore(cardsArr: CardInfo[]): number {
 	});
 	return totalScore;
 }
+
+export function getCardsFromCardsArray(
+	cards: CardInfo[],
+	start: number,
+	end: number
+): CardInfo[] {
+	const res = [];
+	for (let i = start; i < end; i++) {
+		res.push(cards[i]);
+	}
+	return res;
+}

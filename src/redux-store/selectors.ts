@@ -6,5 +6,13 @@ export const helpDialogOpenSelector = (state: RootState) =>
 export const shuffledCardsSelector = (state: RootState) =>
 	state.appSetup.shuffledCards;
 
+export const showAllCardsSelector = (state: RootState) =>
+	state.appSetup.showAllCards;
+
 export const turnOfPlayerSelector = (state: RootState) =>
 	state.gameplay.turnOfPlayer;
+
+export const scoresSelector = (state: RootState) => state.gameplay.scores;
+
+export const cardsAndScoreSelector = (state: RootState) =>
+	state.gameplay.cardsAndScore;

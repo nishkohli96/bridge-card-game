@@ -38,6 +38,11 @@ const TableLayout = () => {
 	const allCards = useMemo(() => generateCardsArray(cards), [cards]);
 	const scoreNorth = calculatePlayerScore(allCards.slice(0, 13));
 
+	const turnOfNorth = turnOfPlayer === Players.NORTH;
+	const turnOfEast = turnOfPlayer === Players.EAST;
+	const turnOfSouth = turnOfPlayer === Players.SOUTH;
+	const turnOfWest = turnOfPlayer === Players.WEST;
+
 	return (
 		<Grid container spacing={5}>
 			<Grid
@@ -51,11 +56,15 @@ const TableLayout = () => {
 				<Grid container item xs={8} justifyContent="flex-end">
 					<CardDeck
 						cards={allCards.slice(0, 13)}
-						isVisible={turnOfPlayer === Players.NORTH}
+						isVisible={turnOfNorth}
 					/>
 				</Grid>
 				<Grid container item xs={4}>
-					<StyledText>{Players.NORTH}</StyledText>
+					<StyledText
+						{...(turnOfNorth && { className: 'highlightBlock' })}
+					>
+						{Players.NORTH}
+					</StyledText>
 				</Grid>
 			</Grid>
 			<Grid container item xs={12}>
@@ -66,7 +75,11 @@ const TableLayout = () => {
 					justifyContent="flex-end"
 					alignItems="center"
 				>
-					<StyledText>{Players.WEST}</StyledText>
+					<StyledText
+						{...(turnOfWest && { className: 'highlightBlock' })}
+					>
+						{Players.WEST}
+					</StyledText>
 				</Grid>
 				<Grid
 					container
@@ -78,7 +91,7 @@ const TableLayout = () => {
 					<div style={{ transform: 'rotate(90deg)' }}>
 						<CardDeck
 							cards={allCards.slice(39, 52)}
-							isVisible={turnOfPlayer === Players.WEST}
+							isVisible={turnOfWest}
 						/>
 					</div>
 				</Grid>
@@ -100,12 +113,16 @@ const TableLayout = () => {
 					>
 						<CardDeck
 							cards={allCards.slice(13, 26)}
-							isVisible={turnOfPlayer === Players.EAST}
+							isVisible={turnOfEast}
 						/>
 					</div>
 				</Grid>
 				<Grid container item xs={2} alignItems="center">
-					<StyledText>{Players.EAST}</StyledText>
+					<StyledText
+						{...(turnOfEast && { className: 'highlightBlock' })}
+					>
+						{Players.EAST}
+					</StyledText>
 				</Grid>
 			</Grid>
 			<Grid
@@ -119,11 +136,15 @@ const TableLayout = () => {
 				<Grid container item xs={8} justifyContent="flex-end">
 					<CardDeck
 						cards={allCards.slice(26, 39)}
-						isVisible={turnOfPlayer === Players.SOUTH}
+						isVisible={turnOfSouth}
 					/>
 				</Grid>
 				<Grid container item xs={4}>
-					<StyledText>{Players.SOUTH}</StyledText>
+					<StyledText
+						{...(turnOfSouth && { className: 'highlightBlock' })}
+					>
+						{Players.SOUTH}
+					</StyledText>
 				</Grid>
 			</Grid>
 			<IntroDialog />

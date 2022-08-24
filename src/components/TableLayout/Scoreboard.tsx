@@ -1,5 +1,6 @@
 import { Drawer } from '@mui/material';
 import { CenterDiv, Header } from 'components';
+import InfoIcon from '@mui/icons-material/Info';
 import { Players } from 'types';
 
 interface ScoreboardProps {
@@ -16,14 +17,22 @@ const Scoreboard = (props: ScoreboardProps) => {
 		>
 			<div
 				style={{
-					paddingTop: 40,
-					background: 'white',
-					minHeight: '100vh',
+					padding: '40px 20px 20px 20px',
+					background: '#1976d2',
+					width: '20vw',
+					height: '100%',
+					color: 'white',
 				}}
 			>
 				<CenterDiv>
-					<Header>Scorecard</Header>
+					<Header style={{ color: 'white', fontWeight: 800 }}>
+						Scorecard
+					</Header>
 				</CenterDiv>
+				<p>
+					This is the initial score when a player has all 13 cards in
+					hand.
+				</p>
 				{Object.values(Players).map((player, index) => (
 					<div
 						key={index}
@@ -47,6 +56,24 @@ const Scoreboard = (props: ScoreboardProps) => {
 						<div>1</div>
 					</div>
 				))}
+				<div
+					style={{
+						position: 'absolute',
+						padding: 10,
+						bottom: 20,
+						right: 20,
+						left: 20,
+						background: '#d9eff780',
+						borderRadius: 10,
+					}}
+				>
+					<div>
+						<InfoIcon />
+					</div>
+					An Ace is worth four points, a King is worth three points, a
+					Queen is worth two, and a Jack is worth one. Other cards are
+					not worth points.
+				</div>
 			</div>
 		</Drawer>
 	);

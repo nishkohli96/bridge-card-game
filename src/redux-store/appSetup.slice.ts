@@ -23,7 +23,7 @@ export const appSetupSlice = createSlice({
 			 * Now rearrange them in random order.
 			 */
 			const sequence = Array.from(Array(52), (_, index) => index);
-			const shuffledArray = sequence.sort((a, b) => 0.5 - Math.random());
+			const shuffledArray = sequence.sort(() => 0.5 - Math.random());
 			state.shuffledCards = shuffledArray;
 		},
 	},

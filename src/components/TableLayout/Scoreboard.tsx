@@ -17,7 +17,7 @@ const Scoreboard = (props: ScoreboardProps) => {
 		>
 			<div
 				style={{
-					padding: '40px 20px 20px 20px',
+					padding: '30px 20px 20px 20px',
 					background: '#1976d2',
 					width: '20vw',
 					height: '100%',

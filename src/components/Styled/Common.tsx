@@ -6,6 +6,13 @@ export const CenterDiv = styled('div')({
 	alignItems: 'center',
 });
 
+export const FlexEndDiv = styled('div')({
+	display: 'flex',
+	alignItems: 'flex-end',
+	width: '100%',
+	flex: 1,
+});
+
 export const Circle = styled('div')({
 	background: '#bfc7f5',
 	width: 250,

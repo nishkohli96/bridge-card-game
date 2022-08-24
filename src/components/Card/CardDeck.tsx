@@ -1,10 +1,11 @@
 import { FC, useState } from 'react';
 import { PlayingCard } from './PlayingCard';
-import { PlayingCardProps } from 'types';
+import { CardInfo } from 'types';
 
 export interface CardDeckProps {
+	cards: CardInfo[];
 	posRight?: boolean;
-	cards: PlayingCardProps[];
+	isVisible: boolean;
 	// numCards: number;
 }
 
@@ -36,7 +37,7 @@ const CardDeck: FC<CardDeckProps> = (props) => {
 						faceValue={card.faceValue}
 						suit={card.suit}
 						index={card.index}
-						isVisible={card.isVisible}
+						isVisible={props.isVisible}
 					/>
 				</div>
 			))}

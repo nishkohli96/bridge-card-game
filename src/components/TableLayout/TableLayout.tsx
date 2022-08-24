@@ -1,8 +1,17 @@
 import { useMemo } from 'react';
 import { Grid, styled } from '@mui/material';
-import { CardDeck, IntroDialog, generateCardsArray } from 'components';
+import {
+	CardDeck,
+	IntroDialog,
+	generateCardsArray,
+	calculatePlayerScore,
+} from 'components';
 import CircularTable from './CircularTable';
-import { useAppSelector, shuffledCardsSelector } from 'redux-store';
+import {
+	useAppSelector,
+	shuffledCardsSelector,
+	turnOfPlayerSelector,
+} from 'redux-store';
 import { Players } from 'types';
 import Scoreboard from './Scoreboard';
 
@@ -25,16 +34,23 @@ const StyledText = styled('div')(({ theme }) => ({
 
 const TableLayout = () => {
 	const cards = useAppSelector(shuffledCardsSelector);
+	const turnOfPlayer = useAppSelector(turnOfPlayerSelector);
 	const allCards = useMemo(() => generateCardsArray(cards), [cards]);
+	const scoreNorth = calculatePlayerScore(allCards.slice(0, 13));
+
 	return (
 		<Grid container>
 			<Grid container item xs={10}>
 				<Grid container spacing={2} style={{ marginTop: 1 }}>
 					<Grid container item xs={12} justifyContent="center">
 						<StyledText>{Players.NORTH}</StyledText>
+						{scoreNorth}
 					</Grid>
 					<Grid container item xs={12} justifyContent="center">
-						<CardDeck cards={allCards.slice(0, 13)} />
+						<CardDeck
+							cards={allCards.slice(0, 13)}
+							isVisible={turnOfPlayer === Players.NORTH}
+						/>
 					</Grid>
 					<Grid container item xs={12} style={{ margin: '20px 0px' }}>
 						<Grid
@@ -54,7 +70,10 @@ const TableLayout = () => {
 							alignItems="center"
 						>
 							<div style={{ transform: 'rotate(90deg)' }}>
-								<CardDeck cards={allCards.slice(39, 52)} />
+								<CardDeck
+									cards={allCards.slice(39, 52)}
+									isVisible={turnOfPlayer === Players.WEST}
+								/>
 							</div>
 						</Grid>
 						<Grid container item xs={4} justifyContent="center">
@@ -73,7 +92,10 @@ const TableLayout = () => {
 									marginTop: -50,
 								}}
 							>
-								<CardDeck cards={allCards.slice(13, 26)} />
+								<CardDeck
+									cards={allCards.slice(13, 26)}
+									isVisible={turnOfPlayer === Players.EAST}
+								/>
 							</div>
 						</Grid>
 						<Grid
@@ -87,7 +109,10 @@ const TableLayout = () => {
 						</Grid>
 					</Grid>
 					<Grid container item xs={12} justifyContent="center">
-						<CardDeck cards={allCards.slice(26, 39)} />
+						<CardDeck
+							cards={allCards.slice(26, 39)}
+							isVisible={turnOfPlayer === Players.SOUTH}
+						/>
 					</Grid>
 					<Grid container item xs={12} justifyContent="center">
 						<StyledText>{Players.SOUTH}</StyledText>

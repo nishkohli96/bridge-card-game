@@ -25,9 +25,8 @@ export enum CardSuits {
 }
 
 /** index is the value corresponding to shuffledCards in redux-store */
-export interface PlayingCardProps {
+export interface CardInfo {
 	faceValue: CardValues;
 	suit: CardSuits;
 	index: number;
-	isVisible: boolean;
 }

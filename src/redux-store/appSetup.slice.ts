@@ -3,11 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 export interface AppState {
 	helpDialogOpen: boolean;
 	shuffledCards: Array<number>;
+	showAllCards: boolean;
 }
 
 const initialState: AppState = {
 	helpDialogOpen: true,
 	shuffledCards: [],
+	showAllCards: false,
 };
 
 export const appSetupSlice = createSlice({
@@ -26,8 +28,12 @@ export const appSetupSlice = createSlice({
 			const shuffledArray = sequence.sort(() => 0.5 - Math.random());
 			state.shuffledCards = shuffledArray;
 		},
+		toggleCardsVisibility: (state) => {
+			state.showAllCards = !state.showAllCards;
+		},
 	},
 });
 
-export const { toggle, shuffleCards } = appSetupSlice.actions;
+export const { shuffleCards, toggle, toggleCardsVisibility } =
+	appSetupSlice.actions;
 export default appSetupSlice.reducer;

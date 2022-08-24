@@ -1,13 +1,25 @@
 import { FC, useState } from 'react';
 import { AppBar, Toolbar, Tooltip, Typography } from '@mui/material';
-import { ResetGameDialog, StyledIconButton, TableLayout } from 'components';
-import { RestartAlt, Visibility, Scoreboard } from '@mui/icons-material';
+import {
+	ResetGameDialog,
+	StyledIconButton,
+	Scoreboard,
+	TableLayout,
+} from 'components';
+import {
+	RestartAlt,
+	Visibility,
+	Scoreboard as ScoreboardIcon,
+} from '@mui/icons-material';
 import { toggleCardsVisibility, useAppDispatch } from 'redux-store';
 
 const HomePage: FC = () => {
 	const [resetDialogOpen, setResetDialogOpen] = useState(false);
+	const [drawerOpen, setDrawerOpen] = useState(false);
 	const dispatch = useAppDispatch();
+
 	const toggleDialog = () => setResetDialogOpen((state) => !state);
+	const toggleDrawer = () => setDrawerOpen((state) => !state);
 
 	return (
 		<div>
@@ -37,8 +49,8 @@ const HomePage: FC = () => {
 						</StyledIconButton>
 					</Tooltip>
 					<Tooltip title="Scorecard">
-						<StyledIconButton onClick={toggleDialog}>
-							<Scoreboard />
+						<StyledIconButton onClick={toggleDrawer}>
+							<ScoreboardIcon />
 						</StyledIconButton>
 					</Tooltip>
 				</Toolbar>
@@ -48,6 +60,7 @@ const HomePage: FC = () => {
 				open={resetDialogOpen}
 				handleClose={toggleDialog}
 			/>
+			<Scoreboard open={drawerOpen} handleClose={toggleDrawer} />
 		</div>
 	);
 };

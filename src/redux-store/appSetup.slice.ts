@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface AppInitialState {
+export interface AppState {
 	helpDialogOpen: boolean;
 	shuffledCards: Array<number>;
 }
 
-const initialState: AppInitialState = {
+const initialState: AppState = {
 	helpDialogOpen: true,
 	shuffledCards: [],
 };

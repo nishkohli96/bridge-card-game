@@ -11,9 +11,11 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import appSetupReducer from './appSetup.slice';
+import gameplayReducer from './gameplay.slice';
 
 const rootReducer = combineReducers({
 	appSetup: appSetupReducer,
+	gameplay: gameplayReducer,
 });
 
 const persistConfig = {

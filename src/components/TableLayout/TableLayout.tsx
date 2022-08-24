@@ -14,7 +14,7 @@ import {
 	shuffledCardsSelector,
 	turnOfPlayerSelector,
 	showAllCardsSelector,
-	setPlayerCardsOrScore,
+	setScores,
 } from 'redux-store';
 import { Players } from 'types';
 
@@ -36,6 +36,7 @@ const StyledText = styled('div')(({ theme }) => ({
  */
 
 const TableLayout = () => {
+	const dispatch = useAppDispatch();
 	const cards = useAppSelector(shuffledCardsSelector);
 	const turnOfPlayer = useAppSelector(turnOfPlayerSelector);
 	const showAllCards = useAppSelector(showAllCardsSelector);
@@ -46,15 +47,14 @@ const TableLayout = () => {
 	const cardsWithSouth = getCardsFromCardsArray(allCards, 26, 39);
 	const cardsWithWest = getCardsFromCardsArray(allCards, 39, 52);
 
-	// useAppDispatch(
-	// 	setPlayerCardsOrScore({
-	// 		payload: {
-	// 			player: Players.NORTH,
-	// 			cards: cardsWithNorth,
-	// 			score: calculatePlayerScore(cardsWithNorth),
-	// 		}
-	// 	})
-	// );
+	dispatch(
+		setScores([
+			calculatePlayerScore(cardsWithNorth),
+			calculatePlayerScore(cardsWithEast),
+			calculatePlayerScore(cardsWithSouth),
+			calculatePlayerScore(cardsWithWest),
+		])
+	);
 
 	const turnOfNorth = turnOfPlayer === Players.NORTH;
 	const turnOfEast = turnOfPlayer === Players.EAST;

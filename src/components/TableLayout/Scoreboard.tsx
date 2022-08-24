@@ -1,6 +1,7 @@
 import { Drawer } from '@mui/material';
 import { CenterDiv, Header } from 'components';
 import InfoIcon from '@mui/icons-material/Info';
+import { useAppSelector, scoresSelector } from 'redux-store';
 import { Players } from 'types';
 
 interface ScoreboardProps {
@@ -9,6 +10,7 @@ interface ScoreboardProps {
 }
 
 const Scoreboard = (props: ScoreboardProps) => {
+	const scores = useAppSelector(scoresSelector);
 	return (
 		<Drawer
 			anchor="right"
@@ -53,7 +55,7 @@ const Scoreboard = (props: ScoreboardProps) => {
 						>
 							{player}
 						</div>
-						<div>1</div>
+						<div>{scores[index]}</div>
 					</div>
 				))}
 				<div

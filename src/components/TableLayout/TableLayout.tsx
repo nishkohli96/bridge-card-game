@@ -67,27 +67,15 @@ const TableLayout = () => {
 					</StyledText>
 				</Grid>
 			</Grid>
-			<Grid container item xs={12}>
-				<Grid
-					container
-					item
-					xs={3}
-					justifyContent="flex-end"
-					alignItems="center"
-				>
+			<Grid container item xs={12} alignItems="center">
+				<Grid container item xs={3} justifyContent="flex-end">
 					<StyledText
 						{...(turnOfWest && { className: 'highlightBlock' })}
 					>
 						{Players.WEST}
 					</StyledText>
 				</Grid>
-				<Grid
-					container
-					item
-					xs={2}
-					justifyContent="flex-end"
-					alignItems="center"
-				>
+				<Grid container item xs={2} justifyContent="flex-end">
 					<div style={{ transform: 'rotate(90deg)' }}>
 						<CardDeck
 							cards={allCards.slice(39, 52)}
@@ -98,13 +86,7 @@ const TableLayout = () => {
 				<Grid container item xs={3} justifyContent="center">
 					<PlayTable />
 				</Grid>
-				<Grid
-					container
-					item
-					xs={2}
-					justifyContent="flex-start"
-					alignItems="center"
-				>
+				<Grid container item xs={2}>
 					<div
 						style={{
 							transform: 'rotate(270deg)',
@@ -117,7 +99,7 @@ const TableLayout = () => {
 						/>
 					</div>
 				</Grid>
-				<Grid container item xs={2} alignItems="center">
+				<Grid container item xs={2}>
 					<StyledText
 						{...(turnOfEast && { className: 'highlightBlock' })}
 					>

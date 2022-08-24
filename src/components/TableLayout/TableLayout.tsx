@@ -1,12 +1,20 @@
 import { useMemo } from 'react';
 import { Grid, styled } from '@mui/material';
-import { CardDeck, IntroDialog, generateCardsArray } from 'components';
+import {
+	CardDeck,
+	IntroDialog,
+	calculatePlayerScore,
+	generateCardsArray,
+	getCardsFromCardsArray,
+} from 'components';
 import PlayTable from './PlayTable';
 import {
 	useAppSelector,
+	useAppDispatch,
 	shuffledCardsSelector,
 	turnOfPlayerSelector,
 	showAllCardsSelector,
+	setPlayerCardsOrScore,
 } from 'redux-store';
 import { Players } from 'types';
 
@@ -33,6 +41,21 @@ const TableLayout = () => {
 	const showAllCards = useAppSelector(showAllCardsSelector);
 	const allCards = useMemo(() => generateCardsArray(cards), [cards]);
 
+	const cardsWithNorth = getCardsFromCardsArray(allCards, 0, 13);
+	const cardsWithEast = getCardsFromCardsArray(allCards, 13, 26);
+	const cardsWithSouth = getCardsFromCardsArray(allCards, 26, 39);
+	const cardsWithWest = getCardsFromCardsArray(allCards, 39, 52);
+
+	// useAppDispatch(
+	// 	setPlayerCardsOrScore({
+	// 		payload: {
+	// 			player: Players.NORTH,
+	// 			cards: cardsWithNorth,
+	// 			score: calculatePlayerScore(cardsWithNorth),
+	// 		}
+	// 	})
+	// );
+
 	const turnOfNorth = turnOfPlayer === Players.NORTH;
 	const turnOfEast = turnOfPlayer === Players.EAST;
 	const turnOfSouth = turnOfPlayer === Players.SOUTH;
@@ -50,7 +73,7 @@ const TableLayout = () => {
 			>
 				<Grid container item xs={7} justifyContent="flex-end">
 					<CardDeck
-						cards={allCards.slice(0, 13)}
+						cards={cardsWithNorth}
 						isVisible={turnOfNorth || showAllCards}
 					/>
 				</Grid>
@@ -73,7 +96,7 @@ const TableLayout = () => {
 				>
 					<Grid item>
 						<CardDeck
-							cards={allCards.slice(39, 52)}
+							cards={cardsWithWest}
 							isVisible={turnOfWest || showAllCards}
 						/>
 					</Grid>
@@ -93,7 +116,7 @@ const TableLayout = () => {
 				<Grid container direction="column" item xs={4} spacing={2}>
 					<Grid item>
 						<CardDeck
-							cards={allCards.slice(13, 26)}
+							cards={cardsWithEast}
 							posRight
 							isVisible={turnOfEast || showAllCards}
 						/>
@@ -119,7 +142,7 @@ const TableLayout = () => {
 			>
 				<Grid container item xs={7} justifyContent="flex-end">
 					<CardDeck
-						cards={allCards.slice(26, 39)}
+						cards={cardsWithSouth}
 						isVisible={turnOfSouth || showAllCards}
 					/>
 				</Grid>

@@ -6,7 +6,7 @@ import {
 	generateCardsArray,
 	calculatePlayerScore,
 } from 'components';
-import CircularTable from './CircularTable';
+import PlayTable from './PlayTable';
 import {
 	useAppSelector,
 	shuffledCardsSelector,
@@ -39,95 +39,92 @@ const TableLayout = () => {
 	const scoreNorth = calculatePlayerScore(allCards.slice(0, 13));
 
 	return (
-		<Grid container>
-			<Grid container item xs={10}>
-				<Grid container item xs={12} alignItems="center" spacing={2}>
-					<Grid container item xs={8} justifyContent="flex-end">
-						<CardDeck
-							cards={allCards.slice(0, 13)}
-							isVisible={turnOfPlayer === Players.NORTH}
-						/>
-					</Grid>
-					<Grid container item xs={4}>
-						<StyledText>{Players.NORTH}</StyledText>
-					</Grid>
+		<Grid container spacing={5}>
+			<Grid
+				container
+				item
+				xs={12}
+				alignItems="center"
+				spacing={2}
+				style={{ marginTop: 20 }}
+			>
+				<Grid container item xs={8} justifyContent="flex-end">
+					<CardDeck
+						cards={allCards.slice(0, 13)}
+						isVisible={turnOfPlayer === Players.NORTH}
+					/>
 				</Grid>
-				<Grid container item xs={12}>
-					<Grid
-						container
-						item
-						xs={2}
-						justifyContent="center"
-						alignItems="center"
-					>
-						<StyledText>{Players.WEST}</StyledText>
-					</Grid>
-					<Grid
-						container
-						item
-						xs={2}
-						justifyContent="flex-end"
-						alignItems="center"
-					>
-						<div style={{ transform: 'rotate(90deg)' }}>
-							<CardDeck
-								cards={allCards.slice(39, 52)}
-								isVisible={turnOfPlayer === Players.WEST}
-							/>
-						</div>
-					</Grid>
-					<Grid container item xs={4} justifyContent="center">
-						<CircularTable />
-					</Grid>
-					<Grid
-						container
-						item
-						xs={2}
-						justifyContent="flex-start"
-						alignItems="center"
-					>
-						<div
-							style={{
-								transform: 'rotate(270deg)',
-								marginTop: -50,
-							}}
-						>
-							<CardDeck
-								cards={allCards.slice(13, 26)}
-								isVisible={turnOfPlayer === Players.EAST}
-							/>
-						</div>
-					</Grid>
-					<Grid
-						container
-						item
-						xs={2}
-						justifyContent="center"
-						alignItems="center"
-					>
-						<StyledText>{Players.EAST}</StyledText>
-					</Grid>
+				<Grid container item xs={4}>
+					<StyledText>{Players.NORTH}</StyledText>
+				</Grid>
+			</Grid>
+			<Grid container item xs={12}>
+				<Grid
+					container
+					item
+					xs={3}
+					justifyContent="flex-end"
+					alignItems="center"
+				>
+					<StyledText>{Players.WEST}</StyledText>
 				</Grid>
 				<Grid
 					container
 					item
-					xs={12}
-					alignItems="flex-start"
-					spacing={2}
+					xs={2}
+					justifyContent="flex-end"
+					alignItems="center"
 				>
-					<Grid container item xs={8} justifyContent="flex-end">
+					<div style={{ transform: 'rotate(90deg)' }}>
 						<CardDeck
-							cards={allCards.slice(26, 39)}
-							isVisible={turnOfPlayer === Players.NORTH}
+							cards={allCards.slice(39, 52)}
+							isVisible={turnOfPlayer === Players.WEST}
 						/>
-					</Grid>
-					<Grid container item xs={4}>
-						<StyledText>{Players.SOUTH}</StyledText>
-					</Grid>
+					</div>
+				</Grid>
+				<Grid container item xs={3} justifyContent="center">
+					<PlayTable />
+				</Grid>
+				<Grid
+					container
+					item
+					xs={2}
+					justifyContent="flex-start"
+					alignItems="center"
+				>
+					<div
+						style={{
+							transform: 'rotate(270deg)',
+							marginTop: -50,
+						}}
+					>
+						<CardDeck
+							cards={allCards.slice(13, 26)}
+							isVisible={turnOfPlayer === Players.EAST}
+						/>
+					</div>
+				</Grid>
+				<Grid container item xs={2} alignItems="center">
+					<StyledText>{Players.EAST}</StyledText>
 				</Grid>
 			</Grid>
-			<Grid item xs={2}>
-				<Scoreboard />
+			<Grid
+				container
+				item
+				xs={12}
+				alignItems="center"
+				spacing={2}
+				style={{ marginTop: 20 }}
+			>
+				<Grid container item xs={8} justifyContent="flex-end">
+					<CardDeck
+						cards={allCards.slice(26, 39)}
+						isVisible={turnOfPlayer === Players.NORTH}
+					/>
+				</Grid>
+				<Grid container item xs={4}>
+					<StyledText>{Players.SOUTH}</StyledText>
+				</Grid>
 			</Grid>
 			<IntroDialog />
 		</Grid>

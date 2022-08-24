@@ -6,13 +6,6 @@ export const CenterDiv = styled('div')({
 	alignItems: 'center',
 });
 
-export const Circle = styled('div')({
-	background: '#c7b2b1',
-	width: 250,
-	height: 250,
-	borderRadius: '50%',
-});
-
 export const Header = styled('div')(({ theme }) => ({
 	color: theme.palette.primary.main,
 	fontSize: 24,

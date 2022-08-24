@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface AppState {
+interface AppState {
 	helpDialogOpen: boolean;
 	shuffledCards: Array<number>;
 	showAllCards: boolean;

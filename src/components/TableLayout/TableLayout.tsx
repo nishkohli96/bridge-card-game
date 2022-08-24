@@ -18,7 +18,7 @@ import Scoreboard from './Scoreboard';
 const StyledText = styled('div')(({ theme }) => ({
 	fontSize: 20,
 	padding: '10px 5px',
-	background: theme.palette.success.main,
+	background: theme.palette.primary.main,
 	borderRadius: 5,
 	width: 80,
 	height: 30,
@@ -119,7 +119,7 @@ const TableLayout = () => {
 				<Grid container item xs={8} justifyContent="flex-end">
 					<CardDeck
 						cards={allCards.slice(26, 39)}
-						isVisible={turnOfPlayer === Players.NORTH}
+						isVisible={turnOfPlayer === Players.SOUTH}
 					/>
 				</Grid>
 				<Grid container item xs={4}>

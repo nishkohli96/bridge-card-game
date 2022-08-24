@@ -13,6 +13,3 @@ export const turnOfPlayerSelector = (state: RootState) =>
 	state.gameplay.turnOfPlayer;
 
 export const scoresSelector = (state: RootState) => state.gameplay.scores;
-
-export const cardsAndScoreSelector = (state: RootState) =>
-	state.gameplay.cardsAndScore;

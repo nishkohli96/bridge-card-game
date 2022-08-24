@@ -4,6 +4,7 @@ import {
 	ResetGameDialog,
 	StyledIconButton,
 	Scoreboard,
+	IntroDialog,
 	TableLayout,
 } from 'components';
 import {
@@ -55,6 +56,7 @@ const HomePage: FC = () => {
 					</Tooltip>
 				</Toolbar>
 			</AppBar>
+			<IntroDialog />
 			<TableLayout />
 			<ResetGameDialog
 				open={resetDialogOpen}

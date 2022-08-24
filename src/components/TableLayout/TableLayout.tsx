@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import { Grid, styled } from '@mui/material';
 import {
 	CardDeck,
-	IntroDialog,
 	calculatePlayerScore,
 	generateCardsArray,
 	getCardsFromCardsArray,
@@ -154,7 +153,6 @@ const TableLayout = () => {
 					</StyledText>
 				</Grid>
 			</Grid>
-			<IntroDialog />
 		</Grid>
 	);
 };

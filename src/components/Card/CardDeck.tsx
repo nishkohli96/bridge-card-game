@@ -6,11 +6,11 @@ export interface CardDeckProps {
 	cards: CardInfo[];
 	posRight?: boolean;
 	isVisible: boolean;
-	// numCards: number;
 }
 
 const CardDeck: FC<CardDeckProps> = (props) => {
 	const shiftOffset = 25;
+	const { cards = [] } = props;
 	const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
 	const highlightCard = (event: any, cardIndex: number) => {
@@ -30,7 +30,7 @@ const CardDeck: FC<CardDeckProps> = (props) => {
 				marginLeft: props.posRight ? shiftOffset : 0,
 			}}
 		>
-			{props.cards.map((card, index) => (
+			{cards.map((card, index) => (
 				<div
 					style={{
 						marginLeft: shiftOffset * -1,

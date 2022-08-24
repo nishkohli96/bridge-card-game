@@ -3,10 +3,12 @@ import { Players } from 'types';
 
 export interface GamePlayState {
 	turnOfPlayer: Players;
+	showAllCards: boolean;
 }
 
 const initialState: GamePlayState = {
 	turnOfPlayer: Players.NORTH,
+	showAllCards: false,
 };
 
 export const gameplaySlice = createSlice({
@@ -16,8 +18,11 @@ export const gameplaySlice = createSlice({
 		nextTurn: (state, action: PayloadAction<Players>) => {
 			state.turnOfPlayer = action.payload;
 		},
+		toggleCardsVisibility: (state) => {
+			state.showAllCards = !state.showAllCards;
+		},
 	},
 });
 
-export const { nextTurn } = gameplaySlice.actions;
+export const { nextTurn, toggleCardsVisibility } = gameplaySlice.actions;
 export default gameplaySlice.reducer;

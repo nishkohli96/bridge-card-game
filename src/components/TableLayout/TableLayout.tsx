@@ -11,6 +11,7 @@ import {
 	useAppSelector,
 	shuffledCardsSelector,
 	turnOfPlayerSelector,
+	showAllCardsSelector,
 } from 'redux-store';
 import { Players } from 'types';
 import Scoreboard from './Scoreboard';
@@ -35,6 +36,7 @@ const StyledText = styled('div')(({ theme }) => ({
 const TableLayout = () => {
 	const cards = useAppSelector(shuffledCardsSelector);
 	const turnOfPlayer = useAppSelector(turnOfPlayerSelector);
+	const showAllCards = useAppSelector(showAllCardsSelector);
 	const allCards = useMemo(() => generateCardsArray(cards), [cards]);
 	const scoreNorth = calculatePlayerScore(allCards.slice(0, 13));
 
@@ -56,7 +58,7 @@ const TableLayout = () => {
 				<Grid container item xs={8} justifyContent="flex-end">
 					<CardDeck
 						cards={allCards.slice(0, 13)}
-						isVisible={turnOfNorth}
+						isVisible={turnOfNorth || showAllCards}
 					/>
 				</Grid>
 				<Grid container item xs={4}>
@@ -79,7 +81,7 @@ const TableLayout = () => {
 					<div style={{ transform: 'rotate(90deg)' }}>
 						<CardDeck
 							cards={allCards.slice(39, 52)}
-							isVisible={turnOfWest}
+							isVisible={turnOfWest || showAllCards}
 						/>
 					</div>
 				</Grid>
@@ -95,7 +97,7 @@ const TableLayout = () => {
 					>
 						<CardDeck
 							cards={allCards.slice(13, 26)}
-							isVisible={turnOfEast}
+							isVisible={turnOfEast || showAllCards}
 						/>
 					</div>
 				</Grid>
@@ -103,7 +105,7 @@ const TableLayout = () => {
 					<StyledText
 						{...(turnOfEast && { className: 'highlightBlock' })}
 					>
-						{Players.EAST}
+						{Players.EAST || showAllCards}
 					</StyledText>
 				</Grid>
 			</Grid>
@@ -118,7 +120,7 @@ const TableLayout = () => {
 				<Grid container item xs={8} justifyContent="flex-end">
 					<CardDeck
 						cards={allCards.slice(26, 39)}
-						isVisible={turnOfSouth}
+						isVisible={turnOfSouth || showAllCards}
 					/>
 				</Grid>
 				<Grid container item xs={4}>
